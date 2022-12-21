@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>music player</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+    <style type="text/css">
+        body,
+        div,
+        h2,
+        p,
+        audio {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: "Poppins";
+            height: 100vh;
+        }
+
+        .wrapper {
+            height: 100%;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(162, 162, 223, 1) 0%, rgba(8, 206, 246, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            /*auto(default),all(클릭으로 선택),none,text 글자 선택 가능*/
+        }
+
+        .play-body {
+            ;
+            width: 380px;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.2)
+        }
+
+        .m-top {
+            margin-bottom: 25px;
+        }
+
+        .m-top>h2 {
+            font-size: 30px;
+            font-weight: 300;
+            color: #252525;
+            text-align: center;
+            ;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(162, 162, 223, 1) 0%, rgba(8, 206, 246, 1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent
+        }
+
+        .m-img {
+            width: 100%;
+            height: 260px;
+            border-radius: 15px;
+            background: #FC9;
+            overflow: hidden
+        }
+
+        .m-img>img {
+            object-fit: cover
+                /*fill(비율유지 없이 가득채움),contain(비율유지,전체이미지),cover(비율유지하고 가득채우기),none(크기조절 안함),scale-down(none,contain중 크기 작은겂)*/
+            ;
+            width: 100%;
+            height: 100%;
+            object-position: center top;
+            /*left, center, right,top,center,bottom, % px*/
+        }
+
+        .m-info {
+            font-size: 20px;
+            margin: 30px;
+            text-align: center;
+        }
+
+        .m-info .artist {
+            font-size: 18px;
+            color: #626263;
+            font-weight: 300;
+        }
+
+        .m-progress {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e0e0e0;
+        }
+
+
+        .si {
+            border: 1px solid #230975;
+            background
+        }
+
+        .m-progress .bar {
+            height: 6px;
+            width: 10%;
+            /*0%*/
+            border-radius: 3px;
+            background: #230975
+        }
+
+        .m-progress>.timer {
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #5d5d5d
+        }
+
+        .m-control {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .m-control span {
+            font-size: 28px
+        }
+
+        /* .m-control .play-pause{width:54px;height:54px; background: #999; border-radius:27px;display:flex; justify-content:center; align-items: center;} */
+    </style>
+    <script>
+        $(function () {
+            $('.si').on('dblclick', function () {
+                $('.a2').show()
+                $('.a1').css('color', 'red')
+
+                $('.m-info,.m-img').css('display', 'none')
+            })
+
+            $('.si').on('click', function () {
+                $('.a2').hide()
+                $('.m-info,.m-img').css('display', 'block')
+                $('.a1').css('color', '#252525')
+            })
+            $('.a2').hide()
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="play-body">
+            <div class="m-top">
+                <h2>Music Player</h2>
+            </div>
+            <div class="m-img">
+                <img src="images/album1.jpg" alt="엘범1">
+                <!-- <img src="images/album2.jpg" alt="엘범2">
+               <img src="images/album3.jpg" alt="엘범3">
+               <img src="images/album4.jpg" alt="엘범4"> -->
+            </div>
+            <div class="m-info"><audio src="song/Alone.mp3"></audio>
+                <p class="name">Alone</p>
+                <p class="artist">Color Out</p>
+            </div>
+            <div class="si">
+                <div class="a1">This place
+                    Why would anybody wanna stay?Out of all the choices you could make
+                </div>
+                <div class="a2" style="display:none">You chose to spend your days
+                    Riding these trains and subways
+                    Yeah I know
+                    Just exactly what you would say
+                    I wouldn't understand what makes it great
+                    But my dear, I'm so sad to say
+                    That I can't wait to leave this place
+                    When there is no where else for you to go
+                    Don't call on me
+                    These streets and empty bars will guide you home
+                    Cause I know just what it means to leave
+                    Tell me when you go to sleep
+                    Do you ever think of me?
+                    Don't you ever wish you weren't alone?
+                    Some days
+                    I still wonder if we'll meet again
+                    And would we hit it off or just pretend
+                    Like we were hardly friends
+                    A one night stand on a long weekend?
+                    Yeah I know
+                    Just exactly what you would say
+                    Play it off like everything is great
+                    Confuse this all for fate
+                    Like stars have never aligned so straight
+                    But I know this was never meant to be
+                    Tell me when you go to sleep
+                    Do you ever dream of me?
+                    Don't you ever wish you weren't alone?
+                    I feel like I've
+                    Been here so many times before</div>
+            </div>
+            <div class="m-progress" style=>
+                <div class="bar"></div>
+                <div class="timer">
+                    <span class="current">0:00</span>
+                    <span class="duration">4:05</span>
+                </div>
+            </div>
+            <div class="m-control">
+                <span><img src="images/a1.png" alt=""></span>
+                <span><img src="images/a2.png" alt=""></span>
+                <span class="play-pause"><img src="images/a3.png" alt="" audio.play()></span>
+                <span><img src="images/a4.png" alt=""></span>
+                <span><img src="images/a5.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+    <script src="d1.js"></script>
+    <script>
+        const musicWrap = document.querySelector(".wrapper");
+        const musicAudio = musicWrap.querySelector("#main-audio")
+        const playBtn = musicWrap.querySelector("#play-btn");
+        const musicplay = () => {
+            playBtn.innerHtML = "pause";//musicWrap.querySelector("#play-btn img").src-"images/a6.png"
+            musicAudio.play()
+        }
+        const musicPause = () => {
+            playBtn.innerHTML = "Play_arrow";
+            musicAudio.pause();
+        }
+        playBtn.addEventListener("click", () => {
+            let getText = playBtn.innerText;//playBtn.innerhHTML
+            getText == "pause") ? musicPause() : musicPlay();
+
+});
+const mReapeat=musicWrap.querySelector("#repeat-btn")
+musicAudio.addEventListener("ended",()=>{let getText=mRepeat.innerText;
+if(getText=="repeat"){ nextMusic();}})
+
+
+        let list_index = "0"//musicList[0] --> musiclist[5] 순환 호출
+        const albumImg = musicWrap.querySelector(".m-img>img")
+        const m_name = musicWrap.querySelector(".name");
+        const m_artis = musicWrap.querySelector(".artist")//musicAudio
+        const loadMusic = (num) => {
+            albumImg.src = 'image/${musicList[num].img}'.jpg;//img 경로
+            musicAudio.src = 'songs/${musicList[num].audio}'.mp3//audio경로
+            m_name.innerText = musicList[num].name;//name 글자정보
+            m_artist.innerText = musicList[num].arist// artist 글자정보
+
+
+        }
+        window.addEventListener("load", () => {
+            loadMusic(list_index)
+        })
+
+        const progressive = musicWrap.querySelector(".m-progress");
+        const progressBar = progressive.querySelector(".bar");
+        const currentTime = progressive.querySelector(".current")
+        const totalTime = progressive.querySelector(".duration")
+        //this,event.target ,event currentTarget
+        musicAudio.addEventListener("timeupdate", (event) => (
+            let current = event.target.currentTime;
+        let duration = event.target.duration; console.log(duration);
+        let progressRtio = (current / duration) * 100;//백분율 계산;
+        let progressBar.style.width = '${progressRatio}%'//progressRtio+%
+        //진행바 넓이 지정
+        musicAudio.addEventListener("loadeddata", (e) => {
+            let totalDuration = musicAudio.duration;
+            let totalMin = Math.floor(totalDuration / 60);
+            let totalSec = Math.floor(totalDuration % 60);
+
+            if (totalSec < 10) { totalSec = '0${totalSec}'; /* "0"+totalSec */ }
+            totalTime.innerHTML = '${totalMin}:${totalSec}';
+        })
+))
+        /*
+        obj.clientWidth,.clientHeight(padding 포함 크기 인식)
+        obj.offsetWidth,.offsetHeight (border포함 크기 인식 ,자식요소 크기 포함인식 )
+        obj.getBoundingClientRect()--widht,height,(border+padding 포함,소수표기 가능성)
+        */
+        progressive.addEventListener("click ,(evt)=>{
+    let maxWidth = progressive.clientWidth;
+        let clickXposition = e.offsetX;
+        let totlaDuration = musicAudio.duration;
+        musicAudio.currentTime = (clickXpositoin / maxWidth) * totalDuration;
+        musicplay();
+})
+
+
+    </script>
+</body>
+
+</html>
